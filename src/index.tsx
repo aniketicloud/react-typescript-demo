@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import Parent from "./props/Parent";
+import GuestList from "./state/GuestList";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Parent />
+    <GuestList />
   </React.StrictMode>,
   document.getElementById("root")
 );
