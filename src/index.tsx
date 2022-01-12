@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import GuestList from "./state/GuestList";
+import UserSearch from "./state/UserSearch";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GuestList />
+    <UserSearch />
   </React.StrictMode>,
   document.getElementById("root")
 );
