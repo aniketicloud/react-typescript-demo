@@ -11,9 +11,15 @@ const UserSearch: React.FC = () => {
   const [foundUser, setFoundUser] = useState<
     undefined | { name: string; age: number }
   >();
+  const [initialMessage, setInitialMessage] = useState("");
 
   const onClick = () => {
-    setFoundUser(users.find((user) => user.name === name));
+    setFoundUser(
+      users.find((user) => {
+        setInitialMessage("user not found");
+        return user.name === name;
+      })
+    );
   };
 
   return (
@@ -23,7 +29,7 @@ const UserSearch: React.FC = () => {
       <input value={name} onChange={(event) => setName(event.target.value)} />
       <button onClick={onClick}>Search</button>
       <br />
-      {foundUser ? foundUser.name : "No User Found"}
+      {foundUser ? foundUser.name : initialMessage}
     </div>
   );
 };
