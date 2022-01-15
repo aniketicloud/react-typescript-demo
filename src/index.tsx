@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import UserSearch from "./state/UserSearch";
+import EventComponent from "./events/EventComponent";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserSearch />
+    <EventComponent />
   </React.StrictMode>,
   document.getElementById("root")
 );
