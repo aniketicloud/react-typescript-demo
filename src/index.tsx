@@ -1,11 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import EventComponent from "./events/EventComponent";
+import UserSearch from "./classes/UserSearch";
+
+const users = [
+  { name: "aaa", age: 12 },
+  { name: "www", age: 12 },
+  { name: "zzz", age: 12 },
+];
 
 ReactDOM.render(
   <React.StrictMode>
-    <EventComponent />
+    <UserSearch users={users} />
   </React.StrictMode>,
   document.getElementById("root")
 );
