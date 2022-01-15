@@ -22,15 +22,21 @@ class UserSearch extends Component<UserSearchProps> {
     initialMessage: "",
   };
 
+  // ? if you just write it as onClick() {}, then the value of
+  // this will show undefined. so to remove that make it arrow function
+  // ! here, you can not add const/let to onClick,
+  // because A class member cannot have the 'const' keyword.
+  onClick = () => {
+    const foundUser = this.props.users.find((user) => {
+      this.setState({ initialMessage: "User not found . . !" });
+      return user.name === this.state.name;
+    });
+    this.setState({ foundUser: foundUser });
+  };
+
   render() {
     const { name, foundUser, initialMessage } = this.state;
-    const onClick = () => {
-      const foundUser = this.props.users.find((user) => {
-        this.setState({ initialMessage: "User not found . . !" });
-        return user.name === name;
-      });
-      this.setState({ foundUser: foundUser });
-    };
+
     return (
       <div>
         Find the user:
@@ -39,7 +45,7 @@ class UserSearch extends Component<UserSearchProps> {
           value={name}
           onChange={(event) => this.setState({ name: event.target.value })}
         />
-        <button onClick={onClick}>Search</button>
+        <button onClick={this.onClick}>Search</button>
         <br />
         {foundUser ? foundUser.name : initialMessage}
       </div>
