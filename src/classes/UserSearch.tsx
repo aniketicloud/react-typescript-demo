@@ -23,10 +23,11 @@ class UserSearch extends Component<UserSearchProps> {
   };
 
   render() {
+    const { name, foundUser, initialMessage } = this.state;
     const onClick = () => {
       const foundUser = this.props.users.find((user) => {
         this.setState({ initialMessage: "User not found . . !" });
-        return user.name === this.state.name;
+        return user.name === name;
       });
       this.setState({ foundUser: foundUser });
     };
@@ -35,14 +36,12 @@ class UserSearch extends Component<UserSearchProps> {
         Find the user:
         <br />
         <input
-          value={this.state.name}
+          value={name}
           onChange={(event) => this.setState({ name: event.target.value })}
         />
         <button onClick={onClick}>Search</button>
         <br />
-        {this.state.foundUser
-          ? this.state.foundUser.name
-          : this.state.initialMessage}
+        {foundUser ? foundUser.name : initialMessage}
       </div>
     );
   }
