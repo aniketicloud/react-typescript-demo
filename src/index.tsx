@@ -1,17 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import UserSearch from "./classes/UserSearch";
-
-const users = [
-  { name: "aaa", age: 12 },
-  { name: "www", age: 12 },
-  { name: "zzz", age: 12 },
-];
+import UserSearch from "./state/UserSearch";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserSearch users={users} />
+    {/* <UserSearch users={users} /> */}
+    <UserSearch />
   </React.StrictMode>,
   document.getElementById("root")
 );

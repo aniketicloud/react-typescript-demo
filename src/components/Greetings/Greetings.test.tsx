@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Greetings from "./Greetings";
-describe("Greetings component", () => {
+describe.skip("Greetings component", () => {
   test("renders 'Hello World!'", () => {
     // ? Arrange
     render(<Greetings />);

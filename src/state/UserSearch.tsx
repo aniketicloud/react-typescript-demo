@@ -24,9 +24,15 @@ const UserSearch: React.FC = () => {
 
   return (
     <div>
-      Find the user:
-      <br />
-      <input value={name} onChange={(event) => setName(event.target.value)} />
+      <label htmlFor="searchedusername">Find the User:</label>
+      <input
+        type="search"
+        value={name}
+        id="searchedusername"
+        name="searchedusername"
+        aria-label="searchedusername"
+        onChange={(event) => setName(event.target.value)}
+      />
       <button onClick={onClick}>Search</button>
       <br />
       {foundUser ? foundUser.name : initialMessage}
