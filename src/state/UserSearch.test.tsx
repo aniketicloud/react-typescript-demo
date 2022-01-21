@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import UserSearch from "./UserSearch";
+import { users } from "./UserSearch";
 
 describe.only("User Search Component", () => {
   test("renders 'Search Text', input field and a search button", () => {
@@ -24,7 +25,7 @@ describe.only("User Search Component", () => {
     expect(searchButton).toBeInTheDocument();
   });
 
-  test.only("renders 'user not found' when button is clicked input has nothing", () => {
+  test("renders 'user not found' when button is clicked input has nothing", () => {
     // ? Arrange
     render(<UserSearch />);
 
@@ -39,24 +40,55 @@ describe.only("User Search Component", () => {
     expect(userNotFoundValidation).toBeInTheDocument();
   });
 
-  test("renders username 'aaa' when I type 'aaa' and click search button", () => {
+  test.only("renders username 'aaa' when I type 'aaa' and click search button", () => {
     // ? Arrange
     render(<UserSearch />);
 
-    // ? Act =>
-    // 1 - type 'aaa' in input field
-    const inputField = screen.getByRole("searchbox", {
-      name: "searchedusername",
-    });
-    userEvent.type(inputField, "aaa");
-    // 2 - Click on 'Search' button
-    const searchButton = screen.getByRole("button", {
-      name: "Search",
-    });
-    userEvent.click(searchButton);
+    // // ? Act =>
+    // // 1 - type 'aaa' in input field
+    // const inputField = screen.getByRole("searchbox", {
+    //   name: "searchedusername",
+    // });
+    // userEvent.type(inputField, "aaa");
+    // // 2 - Click on 'Search' button
+    // const searchButton = screen.getByRole("button", {
+    //   name: "Search",
+    // });
+    // userEvent.click(searchButton);
 
-    // ? Assert
-    const userFoundValidation = screen.getByText("aaa");
-    expect(userFoundValidation).toBeInTheDocument();
+    // // ? Assert
+    // const userFoundValidation = screen.getByText("aaa");
+    // expect(userFoundValidation).toBeInTheDocument();
+
+    // common function to test bunch of data
+    const testUsersArray = (
+      usersArray: { name: string; age: number }[]
+    ): void => {
+      // find inputfield and search-button
+      const inputField = screen.getByRole("searchbox", {
+        name: "searchedusername",
+      });
+      const searchButton = screen.getByRole("button", {
+        name: "Search",
+      });
+
+      usersArray.forEach((user) => {
+        // ? Act => type one user name from array in input field & click search
+        userEvent.type(inputField, user.name);
+
+        // 2 - Click on 'Search' button
+        userEvent.click(searchButton);
+
+        // ? Assert
+        const userFoundValidation = screen.getByText(user.name);
+        expect(userFoundValidation).toBeInTheDocument();
+
+        // TODO: FIND DIFFERENT SOLUTION TO CLEAR THE INPUT VALUE
+        // clearing the input field for next array value
+        fireEvent.change(inputField, { target: { value: "" } });
+      });
+    };
+
+    testUsersArray(users);
   });
 });
