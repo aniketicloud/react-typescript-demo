@@ -1,9 +1,16 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
+// components
 import UserSearch from "./UserSearch";
+
+// data
 import { users } from "./UserSearch";
 
-describe.only("User Search Component", () => {
+// interface
+import { User } from "../classes/UserSearch";
+
+describe.skip("User Search Component", () => {
   test("renders 'Search Text', input field and a search button", () => {
     // ? Arrange
     render(<UserSearch />);
@@ -40,7 +47,7 @@ describe.only("User Search Component", () => {
     expect(userNotFoundValidation).toBeInTheDocument();
   });
 
-  test.only("renders username 'aaa' when I type 'aaa' and click search button", () => {
+  test.only("renders username from the array data when I type 'user.name' and click search button", () => {
     // ? Arrange
     render(<UserSearch />);
 
@@ -61,9 +68,7 @@ describe.only("User Search Component", () => {
     // expect(userFoundValidation).toBeInTheDocument();
 
     // common function to test bunch of data
-    const testUsersArray = (
-      usersArray: { name: string; age: number }[]
-    ): void => {
+    const testUsersArray = (usersArray: User[]): void => {
       // find inputfield and search-button
       const inputField = screen.getByRole("searchbox", {
         name: "searchedusername",

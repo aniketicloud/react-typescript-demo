@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-interface User {
+export interface User {
   name: string;
   age: number;
 }
