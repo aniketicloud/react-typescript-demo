@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import UserSearch from "./state/UserSearch";
+
+// data
+import { users } from "./state/UserSearch";
+
+// components
+// import UserSearch from "./state/UserSearch";
+import UserSearch from "./classes/UserSearch";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <UserSearch users={users} /> */}
-    <UserSearch />
+    <UserSearch users={users} />
   </React.StrictMode>,
   document.getElementById("root")
 );
