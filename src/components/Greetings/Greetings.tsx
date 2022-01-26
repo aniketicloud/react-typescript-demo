@@ -12,7 +12,7 @@ const Greetings: React.FC = () => {
     <div>
       <h2>Hello World!</h2>
       {!changedText && <Output>Original Text</Output>}
-      {changedText && <p>Text is changed</p>}
+      {changedText && <Output>Text is changed</Output>}
       <button onClick={clickHandler} data-testid="text-change-button">
         Change the text
       </button>
