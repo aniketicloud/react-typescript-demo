@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Greetings from "./components/Greetings/Greetings";
+import Async from "./components/Async/Async";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <UserSearch users={users} /> */}
-    <Greetings />
+    <Async />
   </React.StrictMode>,
   document.getElementById("root")
 );
