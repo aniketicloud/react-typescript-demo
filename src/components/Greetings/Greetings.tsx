@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Output from "../Output/Output";
 
 const Greetings: React.FC = () => {
   const [changedText, setChangedText] = useState(false);
@@ -10,8 +11,8 @@ const Greetings: React.FC = () => {
   return (
     <div>
       <h2>Hello World!</h2>
-      {!changedText && <p>Original Text</p>}
-      {changedText && <p>Text is changed</p>}
+      {!changedText && <Output>Original Text</Output>}
+      {changedText && <Output>Text is changed</Output>}
       <button onClick={clickHandler} data-testid="text-change-button">
         Change the text
       </button>

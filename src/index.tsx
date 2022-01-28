@@ -1,18 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Async from "./components/Async/Async";
 import reportWebVitals from "./reportWebVitals";
-
-// data
-import { users } from "./state/UserSearch";
-
-// components
-// import UserSearch from "./state/UserSearch";
-import UserSearch from "./classes/UserSearch";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <UserSearch users={users} /> */}
-    <UserSearch users={users} />
+    <Async />
   </React.StrictMode>,
   document.getElementById("root")
 );
