@@ -5,6 +5,18 @@ export const handlers = [
     sessionStorage.setItem("is-authenticated", true);
     return res(ctx.status(200));
   }),
+  rest.post("/newlogin", (req, res, ctx) => {
+    const { username } = req.body;
+    return res(
+      ctx.json({
+        id: "1234-123",
+        username,
+        firstName: "Nike",
+        lastName: "Olympus",
+      })
+    );
+  }),
+
   rest.get("/user", (req, res, ctx) => {
     const isAuthenticated = sessionStorage.getItem("is-authenticated") === true;
 
