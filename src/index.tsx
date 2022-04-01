@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import Async from "./components/Async/Async";
 import reportWebVitals from "./reportWebVitals";
 
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
 ReactDOM.render(
   <React.StrictMode>
     <Async />
