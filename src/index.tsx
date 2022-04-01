@@ -1,11 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Async from "./components/Async/Async";
 import reportWebVitals from "./reportWebVitals";
 
+import { LoginForm } from "./components/LoginForm";
+
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
 ReactDOM.render(
   <React.StrictMode>
-    <Async />
+    <LoginForm />
   </React.StrictMode>,
   document.getElementById("root")
 );
